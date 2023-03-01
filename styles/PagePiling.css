@@ -1,0 +1,10 @@
+.page-piling {
+    position: relative;
+    overflow: hidden;
+}
+
+.page-piling-section {
+    position: absolute;
+    top: 0;
+    overflow-y: auto;
+}
