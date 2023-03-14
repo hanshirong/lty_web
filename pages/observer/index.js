@@ -33,13 +33,34 @@ function Page1() {
     return <ReactECharts className="w-full h-full" option={option}/>
 }
 
+function ColorCircle(props) {
+
+    let fixedStyle = {
+        borderRadius: '50%',
+        backgroundImage: 'url("backgroundColor1.png")',
+        backgroundSize: '100% 100%',
+        rotate: props.rotate.toString(),
+        width: props.size.toString(),
+        height: props.size.toString(),
+    }
+
+    if (props.otherStyle) {
+        fixedStyle = Object.assign(fixedStyle, props.otherStyle)
+    }
+
+    return (
+        <div style={fixedStyle} />
+    );
+}
+
 // 欢迎页
 function WelcomePage() {
     return (
         <>
-            <div className="w-full h-full" >
-                <div className="w-72 h-72 rounded-full"
-                ></div>
+            <div className="w-full h-full">
+                <ColorCircle size="200px" rotate="-45deg" otherStyle={{
+                    position: 'absolute'
+                }}/>
             </div>
         </>
     );
