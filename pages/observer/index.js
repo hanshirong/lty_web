@@ -33,6 +33,18 @@ function Page1() {
     return <ReactECharts className="w-full h-full" option={option}/>
 }
 
+// 欢迎页
+function WelcomePage() {
+    return (
+        <>
+            <div className="w-full h-full" >
+                <div className="w-72 h-72 rounded-full"
+                ></div>
+            </div>
+        </>
+    );
+}
+
 export default function Observer() {
 
     function onViewChange(view) {
@@ -42,8 +54,9 @@ export default function Observer() {
     return (
         <PagePiling initialView={0} onViewChange={onViewChange}>
             <PageSection variant={1}>
-                <div className="flex flex-col justify-center items-center bg-red-400 w-full h-full">
-                    <Page1/>
+                <div className="flex flex-col justify-center items-center w-full h-full">
+                    {/*<Page1/>*/}
+                    <WelcomePage/>
                 </div>
             </PageSection>
             <PageSection variant={2}>
@@ -54,8 +67,8 @@ export default function Observer() {
             </PageSection>
             <PageSection variant={3}>
                 <div className="flex flex-col justify-center items-center bg-blue-400 w-full h-full">
-                <h1>Resume</h1>
-                <p>Kinda makes sense to put a resume too.</p>
+                    <h1>Resume</h1>
+                    <p>Kinda makes sense to put a resume too.</p>
                 </div>
             </PageSection>
         </PagePiling>
