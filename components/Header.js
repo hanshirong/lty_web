@@ -47,9 +47,9 @@ export default function Header({pathname}) {
                         </ul>
                     </div>
                     {/*<a className="btn btn-ghost normal-case text-xl">daisyUI</a>*/}
-                    <Image className="hidden lg:flex" alt="logo" height={50} width={50} src='/logo.png'/>
+                    <Image className="hidden lg:flex" alt="logo" height={50} width={50} src='/images/logo.png'/>
                 </div>
-                <Image className="lg:hidden" alt="logo" height={50} width={50} src='/logo.png'/>
+                <Image className="lg:hidden" alt="logo" height={50} width={50} src='/images/logo.png'/>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link href='/' className={pathname === '/' ? "text-blue-700" : ""}>主页</Link></li>
