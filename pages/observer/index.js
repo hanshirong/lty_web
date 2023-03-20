@@ -109,6 +109,26 @@ function BasicLayout(props) {
 }
 
 
+function ColorText(props) {
+
+    let className = `${props.textSize ? props.textSize : 'text-9xl'} ${props.startColor ? props.startColor : 'from-blue-600'} ${props.endColor ? props.endColor : 'to-blue-100'} ${props.otherClass ? props.otherClass : ''} bg-clip-text bg-gradient-to-b text-transparent`;
+
+    return (
+        <div className={className}>{props.text}</div>
+    );
+}
+
+function ColorDot(props) {
+    let className = `${props.dotColor ? props.dotColor : 'bg-white'} ${props.borderColor ? props.borderColor : 'border-blue-700'} ${props.otherClass ? props.otherClass : ''}  w-6 h-6 rounded-large border-8`;
+    return (
+        <div
+            className={className}
+        />
+    );
+
+}
+
+
 // 欢迎页
 function WelcomePage() {
     return (
@@ -176,11 +196,12 @@ function WelcomePage() {
                                 className="w-full h-full"
                             >
                                 <div className="w-full ml-32" style={{height: '50%'}}>
-                                    <div className="w-full" style={{height: '40%'}}></div>
-                                    <span
-                                        className="text-9xl bg-clip-text bg-gradient-to-b from-blue-600 to-blue-100 text-transparent">
-                                        {(new Date()).getFullYear().toString()}
-                                    </span>
+                                    <div className="w-full" style={{height: '40%'}}/>
+                                    {/*<span*/}
+                                    {/*    className="text-9xl bg-clip-text bg-gradient-to-b from-blue-600 to-blue-100 text-transparent">*/}
+                                    {/*    {(new Date()).getFullYear().toString()}*/}
+                                    {/*</span>*/}
+                                    <ColorText text={(new Date()).getFullYear().toString()}/>
                                     <div
                                         style={{
                                             position: 'relative',
@@ -208,17 +229,18 @@ function WelcomePage() {
                                         }}
                                     >
                                         <div className="flex">
-                                            <div className="h-1 bg-blue-700 w-24"></div>
-                                            <div className="h-1 bg-gray-400 w-36"></div>
+                                            <div className="h-1 bg-blue-700 w-24"/>
+                                            <div className="h-1 bg-gray-400 w-36"/>
                                         </div>
                                     </div>
                                     <div className="flex">
-                                        <div
-                                            className="bg-white w-6 h-6 rounded-large border-8 border-blue-700 mr-2"
-                                        />
-                                        <p className="text-black">数据观察，我们是业余的 <a className="text-blue-700"
-                                                                                 href="http://luotianyi.moe">∠( ᐛ
-                                            」∠)＿</a>
+                                        {/*<div*/}
+                                        {/*    className="bg-white w-6 h-6 rounded-large border-8 border-blue-700 mr-2"*/}
+                                        {/*/>*/}
+                                        <ColorDot otherClass={'mr-2'}/>
+                                        <p className="text-black">
+                                            数据观察，我们是业余的
+                                            <a className="text-blue-700" href="http://luotianyi.moe">∠( ᐛ 」∠)＿</a>
                                         </p>
                                     </div>
                                 </div>
@@ -243,24 +265,365 @@ function WelcomePage() {
     );
 }
 
+function CountPageLastSevenDayStatus(props) {
+    const [countPageLastSevenDayStatusOption, setCountPageLastSevenDayStatusOption] = React.useState({});
+    React.useEffect(() => {
+        setCountPageLastSevenDayStatusOption({
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data: ['洛天依', '言和', '乐正绫', '乐正龙牙', '墨清弦', '徵羽摩柯']
+            },
+            color: [
+                '#66ccff',
+                '#00FFCC',
+                '#EE0000',
+                '#006666',
+                '#FFFF00',
+                '#0080FF',
+            ],
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['7天前', '6天前', '5天前', '4天前', '3天前', '2天前', '1天前']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '洛天依',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                },
+                {
+                    name: '言和',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '乐正绫',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name: '乐正龙牙',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '墨清弦',
+                    type: 'line',
+                    stack: 'Total',
+                    label: {
+                        show: true,
+                        position: 'top'
+                    },
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                },
+                {
+                    name: '徵羽摩柯',
+                    type: 'line',
+                    stack: 'Total',
+                    label: {
+                        show: true,
+                        position: 'top'
+                    },
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                }
+            ]
+        });
+    });
+    return <ReactECharts
+        style={{
+            height: '100%'
+        }}
+        className={props.classStyle ? props.classStyle : ''}
+        option={countPageLastSevenDayStatusOption} opts={{renderer: 'svg'}}
+    />
+}
+
+// 第一页
 function CountPage() {
     return (
         <>
             <BasicLayout>
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                    <h1 className="text-blue-700 text-7xl font-semibold">第一页</h1>
+                <div className="w-full h-full flex "
+                     style={{
+                         backgroundImage: 'url("/images/bigdata/CornerShape.png")',
+                         backgroundSize: '400px 400px',
+                         backgroundRepeat: 'no-repeat',
+                         backgroundPosition: 'right bottom',
+                     }}
+                >
+                    <div
+                        className="h-full flex flex-col justify-between"
+                        style={{
+                            width: '30%'
+                        }}
+                    >
+                        <Image className="ml-12 mt-8" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <div style={{
+                            width: '100%',
+                            height: '100%',
+                            backgroundImage: 'url("/images/bigdata/YZL.png")',
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'bottom left',
+                        }}/>
+                    </div>
+                    <div className="flex flex-col">
+                        <div className="flex justify-between mt-8">
+                            <div className="flex flex-col items-center">
+                                <ColorText text={"播放量"} textSize={'text-6xl'}/>
+                                <div className="text-2xl " style={{
+                                    marginTop: '-16px'
+                                }}
+                                >播放
+                                </div>
+                            </div>
+                            <ColorText text={"|"} textSize={'text-6xl'} endColor={'to-white'} otherClass={'mx-4'}/>
+                            <div className="flex flex-col items-center">
+                                <ColorText text={"播放量"} textSize={'text-6xl'}/>
+                                <div className="text-2xl " style={{
+                                    marginTop: '-16px'
+                                }}
+                                >投币
+                                </div>
+                            </div>
+                            <ColorText text={"|"} textSize={'text-6xl'} endColor={'to-white'} otherClass={'mx-4'}/>
+                            <div className="flex flex-col items-center">
+                                <ColorText text={"播放量"} textSize={'text-6xl'}/>
+                                <div className="text-2xl " style={{
+                                    marginTop: '-16px'
+                                }}
+                                >评论
+                                </div>
+                            </div>
+                            <ColorText text={"|"} textSize={'text-6xl'} endColor={'to-white'} otherClass={'mx-4'}/>
+                            <div className="flex flex-col items-center">
+                                <ColorText text={"播放量"} textSize={'text-6xl'}/>
+                                <div className="text-2xl " style={{
+                                    marginTop: '-16px'
+                                }}
+                                >稿件
+                                </div>
+                            </div>
+                            <ColorText text={"|"} textSize={'text-6xl'} endColor={'to-white'} otherClass={'mx-4'}/>
+                        </div>
+                        <div className="flex mt-4 h-full">
+                            <div className="flex flex-1 flex-col h-full">
+                                <ColorText text={"过去7日"} textSize={'text-6xl'}/>
+                                <CountPageLastSevenDayStatus classStyle={"pt-8 "}/>
+                            </div>
+                            <div className="flex flex-1 flex-col">
+                                <ColorText text={"新事件"} textSize={'text-6xl'}/>
+                                <div className="flex items-center mt-2">
+                                    <ColorDot/>
+                                    <div className="text-black text-4xl ml-4">2023年，新的企划</div>
+                                </div>
+                                <a href="/" className="text-blue-700 text-4xl ml-8">点击前往</a>
+                                <div className="flex items-center mt-2">
+                                    <ColorDot/>
+                                    <div className="text-black text-4xl ml-4">2023年，新的企划</div>
+                                </div>
+                                <a href="/" className="text-blue-700 text-4xl ml-8">点击前往</a>
+                                <div className="flex items-center mt-2">
+                                    <ColorDot/>
+                                    <div className="text-black text-4xl ml-4">2023年，新的企划</div>
+                                </div>
+                                <a href="/" className="text-blue-700 text-4xl ml-8">点击前往</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </BasicLayout>
         </>
     );
 }
 
+function SevenDayReviewStatus(props) {
+    const [sevenDayReviewStatusOption, setSevenDayReviewStatusOption] = React.useState({});
+    React.useEffect(() => {
+        setSevenDayReviewStatusOption({
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    // Use axis to trigger tooltip
+                    type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+                }
+            },
+            legend: {},
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value'
+            },
+            yAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            series: [
+                {
+                    name: 'Direct',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [320, 302, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: 'Mail Ad',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: 'Affiliate Ad',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: 'Video Ad',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [150, 212, 201, 154, 190, 330, 410]
+                },
+                {
+                    name: 'Search Engine',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [820, 832, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        });
+    });
+    return <ReactECharts
+        style={{
+            height: '100%'
+        }}
+        className={props.classStyle ? props.classStyle : ''}
+        option={sevenDayReviewStatusOption} opts={{renderer: 'svg'}}
+    />
+}
+// 第二页
 function SevenDayReview() {
     return (
         <>
             <BasicLayout>
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                    <h1 className="text-blue-700 text-7xl font-semibold">第二页</h1>
+                <div className="w-full h-full flex">
+                    <div className="flex flex-col">
+                        <Image className="ml-12 mt-8" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <div className="flex-1 flex flex-col pl-8 py-8 justify-between">
+                            <div className="flex flex-col items-center">
+                                <ColorText textSize={"text-3xl"} text={"播放量"}/>
+                                <div className="text-3xl text-green-600 font-bold" style={{marginTop: '-16px'}}>+2333</div>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <ColorText textSize={"text-3xl"} text={"粉丝"}/>
+                                <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333</div>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <ColorText textSize={"text-3xl"} text={"评论"}/>
+                                <div className="text-3xl text-green-600 font-bold" style={{marginTop: '-16px'}}>+2333</div>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <ColorText textSize={"text-3xl"} text={"投币"}/>
+                                <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333</div>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <ColorText textSize={"text-3xl"} text={"收藏"}/>
+                                <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex-1"><SevenDayReviewStatus/></div>
+                    <div className="flex flex-col justify-between">
+                        <Image className="ml-12 mt-8" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                    </div>
                 </div>
             </BasicLayout>
         </>
@@ -396,10 +759,8 @@ function TheLast() {
                             >
                                 <div className="w-full ml-32" style={{height: '50%'}}>
                                     <div className="w-full" style={{height: '40%'}}/>
-                                    <span
-                                        className="text-9xl bg-clip-text bg-gradient-to-b from-blue-400 to-blue-50 text-transparent">
-                                        {(new Date()).getFullYear().toString()}
-                                    </span>
+                                    <ColorText text={(new Date()).getFullYear().toString()} textSize={'text-9xl'}
+                                               startColor={'from-blue-400'} endColor={'to-blue-50'}/>
                                     <div
                                         style={{
                                             position: 'relative',
@@ -418,9 +779,10 @@ function TheLast() {
                                     </div>
                                 </div>
                                 <div className="w-full flex items-end pb-16 pl-32" style={{height: '50%'}}>
-                                    <div
-                                        className="bg-white w-6 h-6 rounded-large border-8 border-blue-700 mr-2"
-                                    />
+                                    {/*<div*/}
+                                    {/*    className="bg-white w-6 h-6 rounded-large border-8 border-blue-700 mr-2"*/}
+                                    {/*/>*/}
+                                    <ColorDot otherClass={'mr-2'}/>
                                     <p className="text-white">欢迎志同道合，喜欢VSinger的加入我们 <a className="text-blue-700"
                                                                                        href="http://luotianyi.moe">点我咨询</a>
                                     </p>
