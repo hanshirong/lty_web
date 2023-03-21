@@ -644,7 +644,7 @@ function SevenDayReview() {
                             </div>
                         </div>
                         <div className="flex-1 flex-col">
-                                <SevenDayReviewStatus/>
+                            <SevenDayReviewStatus/>
                         </div>
                         <form
                             className="flex flex-col justify-between items-end py-8 mr-8 text-white font-bold text-2xl"
@@ -711,6 +711,57 @@ function SevenDayReview() {
     );
 }
 
+function SevenDayTopWordStatus(props) {
+    const [sevenDayTopWordStatusOption, setSevenDayTopWordStatusOption] = React.useState({});
+    React.useEffect(() => {
+        setSevenDayTopWordStatusOption({
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [
+                {
+                    name: 'Access From',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: 40,
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        { value: 1048, name: 'Search Engine' },
+                        { value: 735, name: 'Direct' },
+                        { value: 580, name: 'Email' },
+                        { value: 484, name: 'Union Ads' },
+                        { value: 300, name: 'Video Ads' }
+                    ]
+                }
+            ]
+        });
+    }, []);
+    return <ReactECharts
+        // style={{
+        //     height: '100%'
+        // }}
+        className={props.classStyle ? props.classStyle : ''}
+        option={sevenDayTopWordStatusOption} opts={{renderer: 'svg'}}
+    />
+}
+
 function SevenDayTop() {
     return (
         <>
@@ -720,10 +771,47 @@ function SevenDayTop() {
                         <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
                         <ColorText text={'7日回顾'} textSize={'text-6xl'}/>
                     </div>
-                    <div className="flex justify-between">
-                        <div>作品</div>
-                        <div>作者</div>
-                        <div>最爱</div>
+                    <div className="flex justify-between mt-2 pb-6 w-full h-full">
+                        <div className="flex flex-col pl-8 flex-1">
+                            <div className="flex items-center space-x-2">
+                                <ColorDot/> <div className="text-blue-700 text-4xl">作品分布</div>
+                            </div>
+                            <SevenDayTopWordStatus/>
+                            <div className="flex items-center space-x-2">
+                                <ColorDot/> <div className="text-blue-700 text-4xl">TOP N</div>
+                            </div>
+                            <div className="text-blue-700 text-3xl">TOP N</div>
+                            <div className="text-blue-700 text-3xl">TOP N</div>
+                            <div className="text-blue-700 text-3xl">TOP N</div>
+                            <div className="text-blue-700 text-3xl">TOP N</div>
+                        </div>
+                        <div className="flex flex-col flex-1 card shadow-2xl items-center h-full py-8" style={{width: '40%'}}>
+                            <Image className="rounded-large" alt="洛天依" height={100} width={100} src='/images/vsinger/LTY.png'/>
+                            <div className="text-blue-700 text-3xl mt-4">TOP N</div>
+                            <Image className="mt-2" alt="洛天依" height={180} width={320} src='/a.png'/>
+                            <div className="grid grid-cols-2 gap-4 w-full mt-4">
+                                <div className="flex flex-col items-center">
+                                    <ColorText text={"1234"} textSize={'text-4xl'}/>
+                                    <div className="text-black text-xl" style={{marginTop: '-16px'}}>播放</div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <ColorText text={"1234"} textSize={'text-4xl'}/>
+                                    <div className="text-black text-xl" style={{marginTop: '-16px'}}>播放</div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <ColorText text={"1234"} textSize={'text-4xl'}/>
+                                    <div className="text-black text-xl" style={{marginTop: '-16px'}}>播放</div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <ColorText text={"1234"} textSize={'text-4xl'}/>
+                                    <div className="text-black text-xl" style={{marginTop: '-16px'}}>播放</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col flex-1">
+
+                            <ColorDot/>
+                        </div>
                     </div>
                 </div>
             </BasicLayout>
