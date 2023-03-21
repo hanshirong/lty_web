@@ -1,6 +1,8 @@
 import PagePiling from "../../components/PagePiling";
 import PageSection from "../../components/PageSection";
 
+import styles from "./Observer.module.css";
+
 import React from "react";
 import ReactECharts from 'echarts-for-react';
 import Image from "next/image";
@@ -291,7 +293,9 @@ function CountPageLastSevenDayStatus(props) {
             ],
             toolbox: {
                 feature: {
-                    saveAsImage: {}
+                    saveAsImage: {
+                        show: false
+                    }
                 }
             },
             grid: {
@@ -383,7 +387,7 @@ function CountPageLastSevenDayStatus(props) {
                 }
             ]
         });
-    });
+    }, []);
     return <ReactECharts
         style={{
             height: '100%'
@@ -503,6 +507,13 @@ function SevenDayReviewStatus(props) {
                     type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
                 }
             },
+            toolbox: {
+                feature: {
+                    saveAsImage: {
+                        show: false
+                    }
+                }
+            },
             legend: {},
             grid: {
                 left: '3%',
@@ -515,11 +526,11 @@ function SevenDayReviewStatus(props) {
             },
             yAxis: {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: ['歌曲1', '歌曲2', '歌曲3', '歌曲4', '歌曲5', '歌曲6', '歌曲7']
             },
             series: [
                 {
-                    name: 'Direct',
+                    name: '播放得分',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -531,7 +542,7 @@ function SevenDayReviewStatus(props) {
                     data: [320, 302, 301, 334, 390, 330, 320]
                 },
                 {
-                    name: 'Mail Ad',
+                    name: '评论得分',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -543,7 +554,7 @@ function SevenDayReviewStatus(props) {
                     data: [120, 132, 101, 134, 90, 230, 210]
                 },
                 {
-                    name: 'Affiliate Ad',
+                    name: '投币得分',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -555,7 +566,7 @@ function SevenDayReviewStatus(props) {
                     data: [220, 182, 191, 234, 290, 330, 310]
                 },
                 {
-                    name: 'Video Ad',
+                    name: '弹幕得分',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -567,7 +578,7 @@ function SevenDayReviewStatus(props) {
                     data: [150, 212, 201, 154, 190, 330, 410]
                 },
                 {
-                    name: 'Search Engine',
+                    name: '收藏得分',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -580,7 +591,7 @@ function SevenDayReviewStatus(props) {
                 }
             ]
         });
-    });
+    }, []);
     return <ReactECharts
         style={{
             height: '100%'
@@ -589,40 +600,110 @@ function SevenDayReviewStatus(props) {
         option={sevenDayReviewStatusOption} opts={{renderer: 'svg'}}
     />
 }
+
 // 第二页
 function SevenDayReview() {
     return (
         <>
             <BasicLayout>
-                <div className="w-full h-full flex">
-                    <div className="flex flex-col">
-                        <Image className="ml-12 mt-8" alt="logo" height={60} width={60} src='/images/logo.png'/>
-                        <div className="flex-1 flex flex-col pl-8 py-8 justify-between">
-                            <div className="flex flex-col items-center">
-                                <ColorText textSize={"text-3xl"} text={"播放量"}/>
-                                <div className="text-3xl text-green-600 font-bold" style={{marginTop: '-16px'}}>+2333</div>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <ColorText textSize={"text-3xl"} text={"粉丝"}/>
-                                <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333</div>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <ColorText textSize={"text-3xl"} text={"评论"}/>
-                                <div className="text-3xl text-green-600 font-bold" style={{marginTop: '-16px'}}>+2333</div>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <ColorText textSize={"text-3xl"} text={"投币"}/>
-                                <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333</div>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <ColorText textSize={"text-3xl"} text={"收藏"}/>
-                                <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333</div>
+                <div className="w-full h-full flex flex-col">
+                    <div className="flex items-center" style={{height: '80px'}}>
+                        <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <ColorText text={'7日回顾'} textSize={'text-6xl'}/>
+                    </div>
+                    <div className="w-full h-full flex">
+                        <div className="flex flex-col ">
+                            <div className="flex-1 flex flex-col pl-8 py-8 justify-between">
+                                <div className="flex flex-col items-center">
+                                    <ColorText textSize={"text-3xl"} text={"播放量"}/>
+                                    <div className="text-3xl text-green-600 font-bold"
+                                         style={{marginTop: '-16px'}}>+2333
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <ColorText textSize={"text-3xl"} text={"粉丝"}/>
+                                    <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <ColorText textSize={"text-3xl"} text={"评论"}/>
+                                    <div className="text-3xl text-green-600 font-bold"
+                                         style={{marginTop: '-16px'}}>+2333
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <ColorText textSize={"text-3xl"} text={"投币"}/>
+                                    <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <ColorText textSize={"text-3xl"} text={"收藏"}/>
+                                    <div className="text-3xl text-red-600 font-bold" style={{marginTop: '-16px'}}>-2333
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="flex-1"><SevenDayReviewStatus/></div>
-                    <div className="flex flex-col justify-between">
-                        <Image className="ml-12 mt-8" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <div className="flex-1 flex-col">
+                                <SevenDayReviewStatus/>
+                        </div>
+                        <form
+                            className="flex flex-col justify-between items-end py-8 mr-8 text-white font-bold text-2xl"
+                            style={{width: '200px'}}>
+                            <div
+                                className={styles["expand-label"] + " flex justify-center items-center bg-blue-600 w-auto p-2 rounded-large"}
+                            >
+                                <input type="radio" id="lty" defaultChecked={true} className={styles["expand-checkbox"]}
+                                       value={'lty'} name={'vsinger'}/>
+                                <label htmlFor="lty" className={styles["expand-area"] + " "}>洛天依</label>
+                                <Image className="rounded-large" alt="洛天依" height={60} width={60}
+                                       src='/images/vsinger/LTY.png'/>
+                            </div>
+                            <div
+                                className={styles["expand-label"] + " flex justify-center items-center bg-blue-600 w-auto p-2 rounded-large"}
+                            >
+                                <input type="radio" id="yzl" className={styles["expand-checkbox"]} value={'yzl'}
+                                       name={'vsinger'}/>
+                                <label htmlFor="yzl" className={styles["expand-area"] + " "}>乐正绫</label>
+                                <Image className="rounded-large" alt="乐正绫" height={60} width={60}
+                                       src='/images/vsinger/YZL.png'/>
+                            </div>
+                            <div
+                                className={styles["expand-label"] + " flex justify-center items-center bg-blue-600 w-auto p-2 rounded-large"}
+                            >
+                                <input type="radio" id="yh" className={styles["expand-checkbox"]} value={'yh'}
+                                       name={'vsinger'}/>
+                                <label htmlFor="yh" className={styles["expand-area"] + " "}>言和</label>
+                                <Image className="rounded-large" alt="言和" height={60} width={60}
+                                       src='/images/vsinger/YH.png'/>
+                            </div>
+                            <div
+                                className={styles["expand-label"] + " flex justify-center items-center bg-blue-600 w-auto p-2 rounded-large"}
+                            >
+                                <input type="radio" id="yzly" className={styles["expand-checkbox"]} value={'yzly'}
+                                       name={'vsinger'}/>
+                                <label htmlFor="yzly" className={styles["expand-area"] + " "}>乐正龙牙</label>
+                                <Image className="rounded-large" alt="乐正龙牙" height={60} width={60}
+                                       src='/images/vsinger/YZLY.png'/>
+                            </div>
+                            <div
+                                className={styles["expand-label"] + " flex justify-center items-center bg-blue-600 w-auto p-2 rounded-large"}
+                            >
+                                <input type="radio" id="mqx" className={styles["expand-checkbox"]} value={'mqx'}
+                                       name={'vsinger'}/>
+                                <label htmlFor="mqx" className={styles["expand-area"] + " "}>墨清弦</label>
+                                <Image className="rounded-large" alt="墨清弦" height={60} width={60}
+                                       src='/images/vsinger/MQX.png'/>
+                            </div>
+                            <div
+                                className={styles["expand-label"] + " flex justify-center items-center bg-blue-600 w-auto p-2 rounded-large"}
+                            >
+                                <input type="radio" id="zymk" className={styles["expand-checkbox"]} value={'zymk'}
+                                       name={'vsinger'}/>
+                                <label htmlFor="zymk" className={styles["expand-area"] + " "}>徵羽摩柯</label>
+                                <Image className="rounded-large" alt="徵羽摩柯" height={60} width={60}
+                                       src='/images/vsinger/ZYMK.png'/>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </BasicLayout>
@@ -634,8 +715,16 @@ function SevenDayTop() {
     return (
         <>
             <BasicLayout>
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                    <h1 className="text-blue-700 text-7xl font-semibold">第三页</h1>
+                <div className="w-full h-full flex flex-col">
+                    <div className="flex items-center" style={{height: '80px'}}>
+                        <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <ColorText text={'7日回顾'} textSize={'text-6xl'}/>
+                    </div>
+                    <div className="flex justify-between">
+                        <div>作品</div>
+                        <div>作者</div>
+                        <div>最爱</div>
+                    </div>
                 </div>
             </BasicLayout>
         </>

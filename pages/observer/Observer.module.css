@@ -1,0 +1,30 @@
+.expand-label .expand-area {
+    max-width: 130px;
+    width: 0;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width 0.5s ease;
+}
+
+.expand-label:hover .expand-area {
+    max-width: 130px;
+    width: 120px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.expand-checkbox {
+    display: none;
+}
+
+.expand-checkbox:checked ~ .expand-area {
+    /*max-width: 130px;*/
+    width: 120px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
