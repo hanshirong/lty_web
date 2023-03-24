@@ -823,8 +823,38 @@ function MostTop() {
     return (
         <>
             <BasicLayout>
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                    <h1 className="text-blue-700 text-7xl font-semibold">第四页</h1>
+                <div className="w-full h-full flex flex-col">
+                    <div className="flex items-center" style={{height: '80px'}}>
+                        <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <ColorText text={'作品之最'} textSize={'text-6xl'}/>
+                    </div>
+                    <div className="flex flex-1">
+                        <div className="flex flex-col flex-1">
+                            <div className="flex flex-col flex-1 w-full items-center">
+                                <div className="text-3xl text-blue-700">劳模!</div>
+                                <div className="flex flex-col flex-1">
+                                    <div className="flex items-center">
+                                        <Image className="rounded-box" alt="logo" height={60} width={60} src='/images/vsinger/lty.png'/>
+                                        <div className="text-2xl text-blue-700">共123件作品</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-1 w-full items-center">
+                                <div className="text-3xl text-blue-700">传说之人</div>
+                                <div className="flex flex-1"></div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col flex-1 items-center">
+                            <div className="flex flex-1">
+                                <div className="text-3xl text-blue-700">天神下凡</div>
+                                <div className="flex flex-1"></div>
+                            </div>
+                            <div className="flex flex-1">
+                                <div className="text-3xl text-blue-700">殿堂之才</div>
+                                <div className="flex flex-1"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </BasicLayout>
         </>
