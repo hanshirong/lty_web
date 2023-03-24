@@ -711,7 +711,7 @@ function SevenDayReview() {
     );
 }
 
-function SevenDayTopWordStatus(props) {
+function SevenDayTopWorkStatus(props) {
     const [sevenDayTopWordStatusOption, setSevenDayTopWordStatusOption] = React.useState({});
     React.useEffect(() => {
         setSevenDayTopWordStatusOption({
@@ -762,6 +762,41 @@ function SevenDayTopWordStatus(props) {
     />
 }
 
+function SevenDayTopWorkLoveSingerStatus(props) {
+    const [sevenDayTopWorkLoveSingerStatusOption, setSevenDayTopWorkLoveSingerStatusOption] = React.useState({});
+    React.useEffect(() => {
+        setSevenDayTopWorkLoveSingerStatusOption({
+            radar: {
+                // shape: 'circle',
+                indicator: [
+                { name: 'Sales', max: 6500 },
+                { name: 'Administration', max: 16000 },
+                { name: 'Information Technology', max: 30000 },
+                { name: 'Customer Support', max: 38000 },
+                { name: 'Development', max: 52000 },
+                { name: 'Marketing', max: 25000 }
+                ]
+            },
+            series: [
+                {
+                name: 'Budget vs spending',
+                type: 'radar',
+                data: [
+                    {
+                    value: [5000, 14000, 28000, 26000, 42000, 21000],
+                    name: 'Actual Spending'
+                    }
+                ]
+                }
+            ]
+        });
+    } ,[]);
+    return <ReactECharts
+        className={props.classStyle ? props.classStyle : ''}
+        option={sevenDayTopWorkLoveSingerStatusOption} opts={{renderer: 'svg'}}
+    />
+}
+
 function SevenDayTop() {
     return (
         <>
@@ -776,7 +811,7 @@ function SevenDayTop() {
                             <div className="flex items-center space-x-2">
                                 <ColorDot/> <div className="text-blue-700 text-4xl">作品分布</div>
                             </div>
-                            <SevenDayTopWordStatus/>
+                            <SevenDayTopWorkStatus/>
                             <div className="flex items-center space-x-2">
                                 <ColorDot/> <div className="text-blue-700 text-4xl">TOP N</div>
                             </div>
@@ -785,7 +820,7 @@ function SevenDayTop() {
                             <div className="text-blue-700 text-3xl">TOP N</div>
                             <div className="text-blue-700 text-3xl">TOP N</div>
                         </div>
-                        <div className="flex flex-col flex-1 card shadow-2xl items-center h-full py-8" style={{width: '40%'}}>
+                        <div className="flex flex-col flex-1 card shadow-2xl items-center h-full py-8 mx-8" style={{width: '40%'}}>
                             <Image className="rounded-large" alt="洛天依" height={100} width={100} src='/images/vsinger/LTY.png'/>
                             <div className="text-blue-700 text-3xl mt-4">TOP N</div>
                             <Image className="mt-2" alt="洛天依" height={180} width={320} src='/a.png'/>
@@ -809,8 +844,10 @@ function SevenDayTop() {
                             </div>
                         </div>
                         <div className="flex flex-col flex-1">
-
-                            <ColorDot/>
+                            <div className="flex items-center space-x-2">
+                                <ColorDot/> <div className="text-blue-700 text-4xl">作品分布</div>
+                            </div>
+                            <SevenDayTopWorkLoveSingerStatus/>
                         </div>
                     </div>
                 </div>
