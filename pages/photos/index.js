@@ -16,7 +16,7 @@ function TypeSelect() {
             <div
                 className="w-full h-full lg:w-10/12  2xl:w-1200px flex flex-row flex-wrap justify-center lg:justify-start pt-24">
                 <select className="select select-primary w-full max-w-xs md:mr-10">
-                    <option selected defaultValue={"all"}>全部</option>
+                    <option defaultValue={"all"}>全部</option>
                     <option>洛天依</option>
                     <option>乐正绫</option>
                     <option>言和</option>
@@ -118,33 +118,33 @@ function MasonryImage() {
             >
                 {
                     items.map((item, index) => (
-                        <Fade key={index} bottom>
-                        <div key={index}>
-                            <a href={`#pic-${index}`} className="">
-                                <img key={index} src={item} className="p-2 rounded-large cursor-pointer"
-                                     alt={`${index}`}/>
-                            </a>
-                            <div className="modal" id={`pic-${index}`}>
-                                <div className="modal-box max-w-5xl w-11/12 lg:w-10/12  2xl:w-1200px">
-                                    <div className="flex justify-between items-center mb-4">
-                                        <h3 className="text-2xl font-bold content-center">我是照片的标题</h3>
-                                        <a href="#" className="btn btn-circle ">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                                 viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                                      d="M6 18L18 6M6 6l12 12"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <img key={index} src={item} className="w-full" alt={`${index}`}/>
-                                    <p className="py-4">用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧</p>
-                                    <div className="modal-action">
-                                        <a href="#" className="btn">朕已阅</a>
+                        // <Fade key={index} bottom>
+                            <div key={index}>
+                                <a href={`#pic-${index}`} >
+                                    <img key={index} src={item} className="p-2 rounded-large cursor-pointer"
+                                         alt={`${index}`}/>
+                                </a>
+                                <div className="modal" id={`pic-${index}`}>
+                                    <div className="modal-box max-w-5xl w-11/12 lg:w-10/12  2xl:w-1200px">
+                                        <div className="flex justify-between items-center mb-4">
+                                            <h3 className="text-2xl font-bold content-center">我是照片的标题</h3>
+                                            <a href="#" className="btn btn-circle ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+                                                     viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                          d="M6 18L18 6M6 6l12 12"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <img key={index} src={item} className="w-full" alt={`${index}`}/>
+                                        <p className="py-4">用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧用一句话描述一下图片吧</p>
+                                        <div className="modal-action">
+                                            <a href="#" className="btn">朕已阅</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        </Fade>
+                        // </Fade>
                     ))
                 }
             </Masonry>
