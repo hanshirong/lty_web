@@ -22,6 +22,11 @@ module.exports = {
             animation: {
                 fp: "fp 1 ease-in-out",
             },
+            colors: {
+                gold: '#FFD700',
+                silver: '#C0C0C0',
+                bronze: '#CD7F32',
+            },
         },
         borderRadius: {
             "large": "4rem",

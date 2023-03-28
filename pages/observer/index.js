@@ -242,7 +242,8 @@ function WelcomePage() {
                                         <ColorDot otherClass={'mr-2'}/>
                                         <p className="text-black">
                                             数据观察，我们是业余的
-                                            <a className="text-blue-700" href="http://luotianyi.moe">∠( ᐛ 」∠)＿</a>
+                                            <a className={styles['doudong'] + " text-blue-700"}
+                                               href="http://luotianyi.moe">∠( ᐛ 」∠)＿</a>
                                         </p>
                                     </div>
                                 </div>
@@ -743,11 +744,11 @@ function SevenDayTopWorkStatus(props) {
                         show: false
                     },
                     data: [
-                        { value: 1048, name: 'Search Engine' },
-                        { value: 735, name: 'Direct' },
-                        { value: 580, name: 'Email' },
-                        { value: 484, name: 'Union Ads' },
-                        { value: 300, name: 'Video Ads' }
+                        {value: 1048, name: 'Search Engine'},
+                        {value: 735, name: 'Direct'},
+                        {value: 580, name: 'Email'},
+                        {value: 484, name: 'Union Ads'},
+                        {value: 300, name: 'Video Ads'}
                     ]
                 }
             ]
@@ -769,28 +770,28 @@ function SevenDayTopWorkLoveSingerStatus(props) {
             radar: {
                 // shape: 'circle',
                 indicator: [
-                { name: 'Sales', max: 6500 },
-                { name: 'Administration', max: 16000 },
-                { name: 'Information Technology', max: 30000 },
-                { name: 'Customer Support', max: 38000 },
-                { name: 'Development', max: 52000 },
-                { name: 'Marketing', max: 25000 }
+                    {name: 'Sales', max: 6500},
+                    {name: 'Administration', max: 16000},
+                    {name: 'Information Technology', max: 30000},
+                    {name: 'Customer Support', max: 38000},
+                    {name: 'Development', max: 52000},
+                    {name: 'Marketing', max: 25000}
                 ]
             },
             series: [
                 {
-                name: 'Budget vs spending',
-                type: 'radar',
-                data: [
-                    {
-                    value: [5000, 14000, 28000, 26000, 42000, 21000],
-                    name: 'Actual Spending'
-                    }
-                ]
+                    name: 'Budget vs spending',
+                    type: 'radar',
+                    data: [
+                        {
+                            value: [5000, 14000, 28000, 26000, 42000, 21000],
+                            name: 'Actual Spending'
+                        }
+                    ]
                 }
             ]
         });
-    } ,[]);
+    }, []);
     return <ReactECharts
         className={props.classStyle ? props.classStyle : ''}
         option={sevenDayTopWorkLoveSingerStatusOption} opts={{renderer: 'svg'}}
@@ -809,19 +810,23 @@ function SevenDayTop() {
                     <div className="flex justify-between mt-2 pb-6 w-full h-full">
                         <div className="flex flex-col pl-8 flex-1">
                             <div className="flex items-center space-x-2">
-                                <ColorDot/> <div className="text-blue-700 text-4xl">作品分布</div>
+                                <ColorDot/>
+                                <div className="text-blue-700 text-4xl">作品分布</div>
                             </div>
                             <SevenDayTopWorkStatus/>
                             <div className="flex items-center space-x-2">
-                                <ColorDot/> <div className="text-blue-700 text-4xl">TOP N</div>
+                                <ColorDot/>
+                                <div className="text-blue-700 text-4xl">TOP N</div>
                             </div>
                             <div className="text-blue-700 text-3xl">TOP N</div>
                             <div className="text-blue-700 text-3xl">TOP N</div>
                             <div className="text-blue-700 text-3xl">TOP N</div>
                             <div className="text-blue-700 text-3xl">TOP N</div>
                         </div>
-                        <div className="flex flex-col flex-1 card shadow-2xl items-center h-full py-8 mx-8" style={{width: '40%'}}>
-                            <Image className="rounded-large" alt="洛天依" height={100} width={100} src='/images/vsinger/LTY.png'/>
+                        <div className="flex flex-col flex-1 card shadow-2xl items-center h-full py-8 mx-8"
+                             style={{width: '40%'}}>
+                            <Image className="rounded-large" alt="洛天依" height={100} width={100}
+                                   src='/images/vsinger/LTY.png'/>
                             <div className="text-blue-700 text-3xl mt-4">TOP N</div>
                             <Image className="mt-2" alt="洛天依" height={180} width={320} src='/a.png'/>
                             <div className="grid grid-cols-2 gap-4 w-full mt-4">
@@ -845,7 +850,8 @@ function SevenDayTop() {
                         </div>
                         <div className="flex flex-col flex-1">
                             <div className="flex items-center space-x-2">
-                                <ColorDot/> <div className="text-blue-700 text-4xl">作品分布</div>
+                                <ColorDot/>
+                                <div className="text-blue-700 text-4xl">作品分布</div>
                             </div>
                             <SevenDayTopWorkLoveSingerStatus/>
                         </div>
@@ -856,6 +862,7 @@ function SevenDayTop() {
     );
 }
 
+// 第三页
 function MostTop() {
     return (
         <>
@@ -865,30 +872,128 @@ function MostTop() {
                         <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
                         <ColorText text={'作品之最'} textSize={'text-6xl'}/>
                     </div>
-                    <div className="flex flex-1">
-                        <div className="flex flex-col flex-1">
-                            <div className="flex flex-col flex-1 w-full items-center">
-                                <div className="text-3xl text-blue-700">劳模!</div>
-                                <div className="flex flex-col flex-1">
-                                    <div className="flex items-center">
-                                        <Image className="rounded-box" alt="logo" height={60} width={60} src='/images/vsinger/lty.png'/>
-                                        <div className="text-2xl text-blue-700">共123件作品</div>
+                    <div className="grid grid-cols-2">
+                        <div className="flex flex-col items-center">
+                            <div className="text-3xl text-blue-700">劳模!</div>
+                            <div className="flex flex-col w-full pl-8 space-y-4">
+                                <div className="flex items-center space-x-2">
+                                    <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="text-2xl text-blue-700">无名氏共123件作品</div>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <Image className="rounded-box border-4 border-silver" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="text-2xl text-blue-700">无名氏共123件作品</div>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <Image className="rounded-box border-4 border-bronze" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="text-2xl text-blue-700">无名氏共123件作品</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-3xl text-blue-700">天神下凡</div>
+                            <div className=" flex flex-col w-full px-12 h-full w-auto space-y-2" style={{
+                                backgroundImage: 'url("/images/bigdata/triangle.png")',
+                                backgroundPosition: 'center',
+                                backgroundRepeat: "no-repeat",
+                                backgroundSize: "100% 100%"
+                            }}>
+                                <div className="flex justify-center items-center space-x-2">
+                                    <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="text-2xl text-white">无名氏共123件作品</div>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <Image className="rounded-box border-4 border-silver" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="text-2xl text-blue-700">无名氏共123件作品</div>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <Image className="rounded-box border-4 border-bronze" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="text-2xl text-blue-700">无名氏共123件作品</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-3xl text-blue-700">传说之人</div>
+                            <div className="flex w-full pl-8">
+                                <div className="flex flex-col space-y-4">
+                                    <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="bg-gold h-full" style={{width: '60px', height: '200px'}}/>
+                                </div>
+                                <div className="flex flex-col pl-4">
+                                    <div className="flex items-center text-2xl text-blue-700"
+                                         style={{height: '60px'}}>XXX 传说1234件
+                                    </div>
+                                    <div className="flex">
+                                        <div className="flex flex-col space-y-4">
+                                            <Image className="rounded-box border-4 border-silver" alt="logo" height={60}
+                                                   width={60} src='/images/vsinger/lty.png'/>
+                                            <div className="bg-silver h-full"
+                                                 style={{width: '60px', height: '140px'}}/>
+                                        </div>
+                                        <div className="flex flex-col pl-4">
+                                            <div className="flex items-center text-2xl text-blue-700"
+                                                 style={{height: '60px'}}>XXX 传说1234件
+                                            </div>
+                                            <div className="flex">
+                                                <div className="flex flex-col space-y-4">
+                                                    <Image className="rounded-box border-4 border-bronze" alt="logo"
+                                                           height={60} width={60} src='/images/vsinger/lty.png'/>
+                                                    <div className="bg-bronze h-full"
+                                                         style={{width: '60px', height: '80px'}}/>
+                                                </div>
+                                                <div className="flex flex-col pl-4">
+                                                    <div className="flex items-center text-2xl text-blue-700"
+                                                         style={{height: '60px'}}>XXX 传说1234件
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex flex-1 w-full items-center">
-                                <div className="text-3xl text-blue-700">传说之人</div>
-                                <div className="flex flex-1"></div>
-                            </div>
                         </div>
-                        <div className="flex flex-col flex-1 items-center">
-                            <div className="flex flex-1">
-                                <div className="text-3xl text-blue-700">天神下凡</div>
-                                <div className="flex flex-1"></div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-3xl text-blue-700">殿堂之才</div>
+                            <div className="flex items-center text-2xl text-blue-700" style={{height: '60px'}}>XXX
+                                传说1234件
                             </div>
-                            <div className="flex flex-1">
-                                <div className="text-3xl text-blue-700">殿堂之才</div>
-                                <div className="flex flex-1"></div>
+                            <div className="flex justify-between items-end">
+                                <div className="flex items-center text-2xl text-blue-700" style={{height: '60px'}}>XXX
+                                    传说1234件
+                                </div>
+
+                                <div className="flex flex-col" style={{
+                                    borderRadius: '50%',
+                                    border: '2px dashed blue',
+                                    height: '240px',
+                                    width: '240px'
+                                }}>
+                                    <div className="flex flex-col items-center flex-1">
+                                        <Image className="rounded-large border-4 border-gold" alt="logo" height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                    </div>
+                                    <div className="flex justify-between flex-1">
+                                        <div className="flex flex-col">
+                                            <Image className="rounded-large border-4 border-gold" alt="logo" height={60}
+                                                   width={60} src='/images/vsinger/lty.png'/>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <Image className="rounded-large border-4 border-gold" alt="logo" height={60}
+                                                   width={60} src='/images/vsinger/lty.png'/>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className="flex items-center text-2xl text-blue-700" style={{height: '60px'}}>XXX
+                                    传说1234件
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -898,24 +1003,573 @@ function MostTop() {
     );
 }
 
-function Partner() {
+// 第四页
+function MostTop2() {
     return (
         <>
             <BasicLayout>
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                    <h1 className="text-blue-700 text-7xl font-semibold">第五页</h1>
+                <div className="w-full h-full flex flex-col">
+                    <div className="flex items-center" style={{height: '80px'}}>
+                        <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <ColorText text={'作品之最'} textSize={'text-6xl'}/>
+                    </div>
+                    <div className="grid grid-cols-2">
+                        <div className="flex flex-col items-center">
+                            <div className="text-3xl text-blue-700">众所周知</div>
+                            <div className="flex justify-around w-full py-4">
+                                <div className="flex flex-col items-center space-y-8">
+                                    <div
+                                        className={styles['gradient-gold'] + " card h-36 w-36 flex flex-col items-center justify-around"}>
+                                        <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                        <div className="text-white font-bold text-xl">
+                                            无名氏
+                                        </div>
+                                    </div>
+                                    <div className="text-2xl text-blue-700">一亿播放</div>
+                                </div>
+                                <div className="flex flex-col items-center space-y-8">
+                                    <div
+                                        className={styles['gradient-silver'] + " card h-36 w-36 flex flex-col items-center justify-around"}>
+                                        <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                        <div className="text-white font-bold text-xl">
+                                            无名氏
+                                        </div>
+                                    </div>
+                                    <div className="text-2xl text-blue-700">一亿播放</div>
+
+                                </div>
+                                <div className="flex flex-col items-center space-y-8">
+                                    <div
+                                        className={styles['gradient-copper'] + " card h-36 w-36 flex flex-col items-center justify-around"}>
+                                        <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                        <div className="text-white font-bold text-xl">
+                                            无名氏
+                                        </div>
+                                    </div>
+                                    <div className="text-2xl text-blue-700">一亿播放</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-3xl text-blue-700">一节更比六节强</div>
+                            <div className="flex justify-around w-full py-4">
+                                <div className="flex flex-col items-center">
+                                    <div style={{
+                                        height: '20px',
+                                        width: '20px',
+                                        borderRadius: '6px 6px 0px 0px',
+                                    }}
+                                         className="bg-gold"
+                                    />
+                                    <div style={{
+                                        width: '120px',
+                                        height: '160px',
+                                        borderRadius: '10px'
+                                    }}
+                                         className="flex flex-col justify-around items-center bg-gold"
+                                    >
+                                        <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                        <div className="text-white font-bold text-xl">
+                                            无名氏
+                                        </div>
+                                        <div className="text-white font-bold ">
+                                            1小时
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <div style={{
+                                        height: '20px',
+                                        width: '20px',
+                                        borderRadius: '6px 6px 0px 0px',
+                                    }}
+                                         className="bg-silver"
+                                    />
+                                    <div style={{
+                                        width: '120px',
+                                        height: '160px',
+                                        borderRadius: '10px'
+                                    }}
+                                         className="flex flex-col justify-around items-center bg-silver"
+                                    >
+                                        <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                        <div className="text-white font-bold text-xl">
+                                            无名氏
+                                        </div>
+                                        <div className="text-white font-bold ">
+                                            1小时
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <div style={{
+                                        height: '20px',
+                                        width: '20px',
+                                        borderRadius: '6px 6px 0px 0px',
+                                    }}
+                                         className="bg-bronze"
+                                    />
+                                    <div style={{
+                                        width: '120px',
+                                        height: '160px',
+                                        borderRadius: '10px'
+                                    }}
+                                         className="flex flex-col justify-around items-center bg-bronze"
+                                    >
+                                        <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                        <div className="text-white font-bold text-xl">
+                                            无名氏
+                                        </div>
+                                        <div className="text-white font-bold ">
+                                            1小时
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-3xl text-blue-700">好热闹啊</div>
+                            <div className="flex flex-col w-full h-full pl-8 space-y-8">
+                                <div className="flex w-full space-x-4">
+                                    <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="chat chat-start w-full">
+                                        <div className="chat-bubble chat-bubble-info">xxx作品，评论数量XXX</div>
+                                    </div>
+                                </div>
+                                <div className="flex w-full space-x-4">
+                                    <div className="chat chat-end w-full">
+                                        <div className="chat-bubble chat-bubble-success">xxx作品，评论数量XXX</div>
+                                    </div>
+                                    <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                </div>
+                                <div className="flex w-full space-x-4">
+                                    <Image className="rounded-box border-4 border-gold" alt="logo" height={60}
+                                           width={60} src='/images/vsinger/lty.png'/>
+                                    <div className="chat chat-start w-full">
+                                        <div className="chat-bubble chat-bubble-warning">xxx作品，评论数量XXX</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-3xl text-blue-700">很快啊！</div>
+                            <div className="flex w-full h-full justify-around items-center">
+                                <div className="flex flex-col items-center">
+                                    <div
+                                        style={{
+                                            backgroundImage: 'url("/images/bigdata/running_man.png")',
+                                            backgroundSize: 'contain',
+                                            backgroundPosition: 'top',
+                                            backgroundRepeat: 'no-repeat',
+                                            height: '190px',
+                                            width: '130px'
+                                        }}
+                                    >
+                                        <Image className="rounded-large border-4 border-gold float-right" alt="logo"
+                                               height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                    </div>
+                                    <div className="text-2xl text-blue-700">xxx作品时长1分钟</div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <div
+                                        style={{
+                                            backgroundImage: 'url("/images/bigdata/running_man.png")',
+                                            backgroundSize: 'contain',
+                                            backgroundPosition: 'top',
+                                            backgroundRepeat: 'no-repeat',
+                                            height: '190px',
+                                            width: '130px'
+                                        }}
+                                    >
+                                        <Image className="rounded-large border-4 border-gold float-right" alt="logo"
+                                               height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                    </div>
+                                    <div className="text-2xl text-blue-700">一亿播放</div>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <div
+                                        style={{
+                                            backgroundImage: 'url("/images/bigdata/running_man.png")',
+                                            backgroundSize: 'contain',
+                                            backgroundPosition: 'top',
+                                            backgroundRepeat: 'no-repeat',
+                                            height: '190px',
+                                            width: '130px'
+                                        }}
+                                    >
+                                        <Image className="rounded-large border-4 border-gold float-right" alt="logo"
+                                               height={60}
+                                               width={60} src='/images/vsinger/lty.png'/>
+                                    </div>
+                                    <div className="text-2xl text-blue-700">一亿播放</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </BasicLayout>
         </>
     );
 }
 
+function PartnerHotMapStatus(props) {
+    const [partnerHotMapStatusOption, setPartnerHotMapStatusOption] = React.useState({});
+    React.useEffect(() => {
+        setPartnerHotMapStatusOption({
+            tooltip: {
+                position: 'top',
+            },
+            xAxis: {
+                type: 'category',
+                data: ['洛天依', '乐正绫', '言和', '乐正龙牙', '墨清弦', '徵羽摩柯'],
+            },
+            yAxis: {
+                type: 'category',
+                data: ['洛天依', '乐正绫', '言和', '乐正龙牙', '墨清弦', '徵羽摩柯'],
+            },
+            visualMap: {
+                min: 0,
+                max: 10,
+                calculable: true,
+                orient: 'horizontal',
+                left: 'center',
+                bottom: '15%'
+            },
+            series: [
+                {
+                    name: 'Punch Card',
+                    type: 'heatmap',
+                    data: [
+                        [0, 0, 10],
+                        [1, 1, 9],
+                        [2, 2, 8],
+                        [3, 3, 7],
+                        [4, 4, 6],
+                        [5, 5, 5],
+                    ],
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        });
+    }, []);
+    return <ReactECharts
+        style={props.classStyle ? props.classStyle : {}}
+        option={partnerHotMapStatusOption} opts={{renderer: 'svg'}}
+    />
+}
+
+function PartnerRelationshipStatus(props) {
+    const [partnerRelationshipStatusOption, setPartnerRelationshipStatusOption] = React.useState({});
+    React.useEffect(() => {
+        setPartnerRelationshipStatusOption({
+            title: {
+                text: 'Basic Graph'
+            },
+            tooltip: {},
+            animationDurationUpdate: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            series: [
+                {
+                    type: 'graph',
+                    layout: 'none',
+                    symbolSize: 50,
+                    roam: true,
+                    label: {
+                        show: true
+                    },
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [4, 10],
+                    edgeLabel: {
+                        fontSize: 20
+                    },
+                    data: [
+                        {
+                            name: 'Node 1',
+                            x: 300,
+                            y: 300
+                        },
+                        {
+                            name: 'Node 2',
+                            x: 800,
+                            y: 300
+                        },
+                        {
+                            name: 'Node 3',
+                            x: 550,
+                            y: 100
+                        },
+                        {
+                            name: 'Node 4',
+                            x: 550,
+                            y: 500
+                        }
+                    ],
+                    // links: [],
+                    links: [
+                        {
+                            source: 0,
+                            target: 1,
+                            symbolSize: [5, 20],
+                            label: {
+                                show: true
+                            },
+                            lineStyle: {
+                                width: 5,
+                                curveness: 0.2
+                            }
+                        },
+                        {
+                            source: 'Node 2',
+                            target: 'Node 1',
+                            label: {
+                                show: true
+                            },
+                            lineStyle: {
+                                curveness: 0.2
+                            }
+                        },
+                        {
+                            source: 'Node 1',
+                            target: 'Node 3'
+                        },
+                        {
+                            source: 'Node 2',
+                            target: 'Node 3'
+                        },
+                        {
+                            source: 'Node 2',
+                            target: 'Node 4'
+                        },
+                        {
+                            source: 'Node 1',
+                            target: 'Node 4'
+                        }
+                    ],
+                    lineStyle: {
+                        opacity: 0.9,
+                        width: 2,
+                        curveness: 0
+                    }
+                }
+            ]
+        });
+    }, []);
+    return <ReactECharts
+        style={props.classStyle ? props.classStyle : {}}
+        option={partnerRelationshipStatusOption} opts={{renderer: 'svg'}}
+    />
+}
+
+// 第五页
+function Partner() {
+    return (
+        <>
+            <BasicLayout>
+                <div className="w-full h-full flex flex-col">
+                    <div className="flex items-center" style={{height: '80px'}}>
+                        <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <ColorText text={'最佳搭档'} textSize={'text-6xl'}/>
+                    </div>
+                    <div className="flex h-full  w-full ">
+                        <div className="flex-1">
+                            <PartnerHotMapStatus classStyle={{width: '100%', height: '100%'}}/>
+                        </div>
+                        <div className="flex-1">
+                            <PartnerRelationshipStatus classStyle={{width: '100%', height: '100%'}}/>
+                        </div>
+                    </div>
+                </div>
+            </BasicLayout>
+        </>
+    );
+}
+
+function AuthorPartnerHotMapStatus(props) {
+    const [AuthorPartnerHotMapStatusOption, setAuthorPartnerHotMapStatusOption] = React.useState({});
+    const data = [];
+    for (let i = 0; i < 5; ++i) {
+        data.push(Math.round(Math.random() * 200));
+    }
+    React.useEffect(() => {
+        setAuthorPartnerHotMapStatusOption({
+            xAxis: {
+                max: 'dataMax'
+            },
+            yAxis: {
+                type: 'category',
+                data: ['A', 'B', 'C', 'D', 'E'],
+                inverse: true,
+                animationDuration: 300,
+                animationDurationUpdate: 300,
+                max: 2 // only the largest 3 bars will be displayed
+            },
+            series: [
+                {
+                    realtimeSort: true,
+                    name: 'X',
+                    type: 'bar',
+                    data: data,
+                    label: {
+                        show: true,
+                        position: 'right',
+                        valueAnimation: true
+                    }
+                }
+            ],
+            legend: {
+                show: true
+            },
+            animationDuration: 0,
+            animationDurationUpdate: 3000,
+            animationEasing: 'linear',
+            animationEasingUpdate: 'linear'
+        });
+    }, []);
+    return <ReactECharts
+        style={props.classStyle ? props.classStyle : {}}
+        option={AuthorPartnerHotMapStatusOption} opts={{renderer: 'svg'}}
+    />
+}
+
+function AuthorPartnerRelationshipStatus(props) {
+    const [AuthorPartnerRelationshipStatusOption, setAuthorPartnerRelationshipStatusOption] = React.useState({});
+    React.useEffect(() => {
+        setAuthorPartnerRelationshipStatusOption({
+            title: {
+                text: 'Basic Graph'
+            },
+            tooltip: {},
+            animationDurationUpdate: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            series: [
+                {
+                    type: 'graph',
+                    layout: 'none',
+                    symbolSize: 50,
+                    roam: true,
+                    label: {
+                        show: true
+                    },
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [4, 10],
+                    edgeLabel: {
+                        fontSize: 20
+                    },
+                    data: [
+                        {
+                            name: 'Node 1',
+                            x: 300,
+                            y: 300
+                        },
+                        {
+                            name: 'Node 2',
+                            x: 800,
+                            y: 300
+                        },
+                        {
+                            name: 'Node 3',
+                            x: 550,
+                            y: 100
+                        },
+                        {
+                            name: 'Node 4',
+                            x: 550,
+                            y: 500
+                        }
+                    ],
+                    // links: [],
+                    links: [
+                        {
+                            source: 0,
+                            target: 1,
+                            symbolSize: [5, 20],
+                            label: {
+                                show: true
+                            },
+                            lineStyle: {
+                                width: 5,
+                                curveness: 0.2
+                            }
+                        },
+                        {
+                            source: 'Node 2',
+                            target: 'Node 1',
+                            label: {
+                                show: true
+                            },
+                            lineStyle: {
+                                curveness: 0.2
+                            }
+                        },
+                        {
+                            source: 'Node 1',
+                            target: 'Node 3'
+                        },
+                        {
+                            source: 'Node 2',
+                            target: 'Node 3'
+                        },
+                        {
+                            source: 'Node 2',
+                            target: 'Node 4'
+                        },
+                        {
+                            source: 'Node 1',
+                            target: 'Node 4'
+                        }
+                    ],
+                    lineStyle: {
+                        opacity: 0.9,
+                        width: 2,
+                        curveness: 0
+                    }
+                }
+            ]
+        });
+    }, []);
+    return <ReactECharts
+        style={props.classStyle ? props.classStyle : {}}
+        option={AuthorPartnerRelationshipStatusOption} opts={{renderer: 'svg'}}
+    />
+}
+
+// 第六页
 function AuthorPartner() {
     return (
         <>
             <BasicLayout>
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                    <h1 className="text-blue-700 text-7xl font-semibold">第六页</h1>
+                <div className="w-full h-full flex flex-col">
+                    <div className="flex items-center" style={{height: '80px'}}>
+                        <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <ColorText text={'友好合作'} textSize={'text-6xl'}/>
+                    </div>
+                    <div className="flex h-full  w-full ">
+                        <div className="flex-1">
+                            <AuthorPartnerHotMapStatus classStyle={{width: '100%', height: '100%'}}/>
+                        </div>
+                        <div className="flex-1">
+                            <AuthorPartnerRelationshipStatus classStyle={{width: '100%', height: '100%'}}/>
+                        </div>
+                    </div>
                 </div>
             </BasicLayout>
         </>
@@ -927,8 +1581,89 @@ function VSingerMerchandise() {
     return (
         <>
             <BasicLayout>
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                    <h1 className="text-blue-700 text-7xl font-semibold">第七页</h1>
+                <div className="w-full h-full flex flex-col">
+                    <div className="flex items-center" style={{height: '80px'}}>
+                        <Image className="ml-12 mr-4" alt="logo" height={60} width={60} src='/images/logo.png'/>
+                        <ColorText text={'周边信息'} textSize={'text-6xl'}/>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 h-full w-full">
+                        <div className="flex flex-col items-center">
+                            <ColorText text={"专辑"}/>
+                            <div
+                                className="flex justify-center items-center bg-blue-700 text-white text-4xl cursor-pointer"
+                                style={{
+                                    height: '100px',
+                                    width: '200px',
+                                    marginTop: '-40px'
+                                }}>
+                                100份
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <ColorText text={"手办"}/>
+                            <div
+                                className="flex justify-center items-center bg-blue-700 text-white text-4xl cursor-pointer"
+                                style={{
+                                    height: '100px',
+                                    width: '200px',
+                                    marginTop: '-40px'
+                                }}>
+                                100份
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <ColorText text={"演唱会"}/>
+                            <div
+                                className="flex justify-center items-center bg-blue-700 text-white text-4xl cursor-pointer"
+                                style={{
+                                    height: '100px',
+                                    width: '200px',
+                                    marginTop: '-40px'
+                                }}>
+                                100份
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <ColorText text={"联动"}/>
+                            <div
+                                className="flex justify-center items-center bg-blue-700 text-white text-4xl cursor-pointer"
+                                style={{
+                                    height: '100px',
+                                    width: '200px',
+                                    marginTop: '-40px'
+                                }}>
+                                100份
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <ColorText text={"代言"}/>
+                            <div
+                                className="flex justify-center items-center bg-blue-700 text-white text-4xl cursor-pointer"
+                                style={{
+                                    height: '100px',
+                                    width: '200px',
+                                    marginTop: '-40px'
+                                }}>
+                                100份
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <ColorText text={"游戏"}/>
+                            <div
+                                className="flex justify-center items-center bg-blue-700 text-white text-4xl cursor-pointer"
+                                style={{
+                                    height: '100px',
+                                    width: '200px',
+                                    marginTop: '-40px'
+                                }}>
+                                100份
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex items-center space-x-4 pl-8 pb-8">
+                        <ColorDot/>
+                        <div>点击查看详情并补充</div>
+                    </div>
                 </div>
             </BasicLayout>
         </>
@@ -1013,7 +1748,7 @@ function TheLast() {
                                         }}
                                         className="flex flex-col"
                                     >
-                                        <span className="text-white text-7xl">VSinger会更好</span>
+                                        <span className={styles['doudong'] + " text-white text-7xl"}>VSinger会更好</span>
                                         <span className="text-blue-200 text-3xl mt-2" style={{
                                             width: '460px',
                                             textAlignLast: 'justify',
@@ -1064,15 +1799,18 @@ export default function Observer() {
                 <MostTop/>
             </PageSection>
             <PageSection variant={6}>
-                <Partner/>
+                <MostTop2/>
             </PageSection>
             <PageSection variant={7}>
-                <AuthorPartner/>
+                <Partner/>
             </PageSection>
             <PageSection variant={8}>
-                <VSingerMerchandise/>
+                <AuthorPartner/>
             </PageSection>
             <PageSection variant={9}>
+                <VSingerMerchandise/>
+            </PageSection>
+            <PageSection variant={10}>
                 <TheLast/>
             </PageSection>
         </PagePiling>

@@ -28,3 +28,84 @@
     margin-left: 8px;
     margin-right: 8px;
 }
+
+.doudong{
+    animation: uk-text-shadow-glitch .65s cubic-bezier(1,-1.91,0,2.79) 0s infinite normal both running;
+}
+@keyframes uk-text-shadow-glitch {
+    0% {
+        text-shadow: none
+    }
+    25% {
+        text-shadow: -2px -2px 0 #ff004f,2px 2px 0 #00f7ef
+    }
+    50% {
+        text-shadow: 2px -2px 0 #ff004f,-2px 2px 0 #00f7ef
+    }
+    75% {
+        text-shadow: -2px 2px 0 #ff004f,2px -2px 0 #00f7ef
+    }
+    100% {
+        text-shadow: 2px 2px 0 #ff004f,-2px -2px 0 #00f7ef
+    }
+}
+@keyframes uk-flicker {
+    0% {
+        opacity: 0
+    }
+    10% {
+        opacity: .6;
+        transform: scale(.8)
+    }
+    20% {
+        opacity: 0
+    }
+    40% {
+        opacity: 1
+    }
+    50% {
+        opacity: .2;
+        transform: scale(1.1)
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+.gradient-bg {
+    background: linear-gradient(120deg, #2196f3, #f44336, #FF5F6D, #FFC371, #CB3066, #16BFFD, #EECDA3, #EF629F);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.gradient-gold {
+    background: linear-gradient(120deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+
+.gradient-silver {
+    background: linear-gradient(120deg, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+.gradient-copper {
+    background: linear-gradient(120deg, #4fb576 0%, #44c489 30%, #28a9ae 46%, #28a2b7 59%, #4c7788 71%, #6c4f63 86%, #432c39 100%);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
